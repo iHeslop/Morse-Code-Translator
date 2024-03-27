@@ -1,0 +1,154 @@
+@use "./partials/queries";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Space Mono", monospace;
+  overflow: hidden;
+}
+
+:root {
+  --c-sc: #ece7e1;
+  --c-txt: lightgray;
+  --c-bg: #333333;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--c-sc);
+  color: var(--c-txt);
+  height: 100vh;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5%;
+  padding: 50px;
+  background-color: var(--c-bg);
+  height: 80vh;
+  width: 90vw;
+  box-shadow: 1rem 1rem black;
+  @include queries.small {
+    gap: 3%;
+    margin-top: -50px;
+    height: 87%;
+    width: 85vw;
+    padding: 20px;
+    box-shadow: 0.6rem 0.6rem black;
+  }
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  @include queries.small {
+    gap: 5px;
+    align-items: flex-start;
+  }
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid var(--c-bg);
+  color: var(--c-bg);
+  text-align: center;
+  padding: 10px 0;
+  overflow: hidden;
+  letter-spacing: 2px;
+  &-date {
+    font-size: 16px;
+    @include queries.small {
+      font-size: 12px;
+    }
+  }
+  &-text {
+    font-size: 16px;
+    @include queries.small {
+      font-size: 12px;
+    }
+  }
+  @include queries.small {
+    padding: 5px;
+  }
+}
+
+.translator {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 50px;
+  @include queries.small {
+    gap: 20px;
+    flex-direction: column;
+  }
+  &-heading {
+    font-size: 40px;
+    @include queries.small {
+      font-size: 20px;
+    }
+  }
+  &-desc {
+    font-size: 18px;
+    @include queries.small {
+      font-size: 12px;
+    }
+  }
+}
+
+.morse {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 55vh;
+  width: 100%;
+  gap: 10px;
+  @include queries.small {
+    gap: 5px;
+    height: 35vh;
+  }
+  & h3 {
+    justify-self: center;
+    z-index: 1;
+    font-size: 24px;
+    height: 40px;
+    @include queries.small {
+      height: 30px;
+      font-size: 14px;
+    }
+  }
+  &-area {
+    resize: none;
+    height: 100%;
+    background-color: var(--c-bg);
+    font-size: 18px;
+    padding: 10px;
+    color: var(--c-txt);
+    &:focus {
+      border: 1px solid #fff;
+      overflow: hidden;
+      outline: none;
+    }
+    @include queries.small {
+      height: 100%;
+      font-size: 12px;
+      padding: 5px;
+    }
+  }
+}
+
+.error {
+  height: 50px;
+  @include queries.small {
+    height: 20px;
+  }
+}

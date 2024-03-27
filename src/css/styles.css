@@ -1,0 +1,178 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Space Mono", monospace;
+  overflow: hidden;
+}
+
+:root {
+  --c-sc: #ece7e1;
+  --c-txt: lightgray;
+  --c-bg: #333333;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--c-sc);
+  color: var(--c-txt);
+  height: 100vh;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5%;
+  padding: 50px;
+  background-color: var(--c-bg);
+  height: 80vh;
+  width: 90vw;
+  box-shadow: 1rem 1rem black;
+}
+@media only screen and (max-width: 768px) {
+  main {
+    gap: 3%;
+    margin-top: -50px;
+    height: 87%;
+    width: 85vw;
+    padding: 20px;
+    box-shadow: 0.6rem 0.6rem black;
+  }
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+@media only screen and (max-width: 768px) {
+  header {
+    gap: 5px;
+    align-items: flex-start;
+  }
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid var(--c-bg);
+  color: var(--c-bg);
+  text-align: center;
+  padding: 10px 0;
+  overflow: hidden;
+  letter-spacing: 2px;
+}
+.footer-date {
+  font-size: 16px;
+}
+@media only screen and (max-width: 768px) {
+  .footer-date {
+    font-size: 12px;
+  }
+}
+.footer-text {
+  font-size: 16px;
+}
+@media only screen and (max-width: 768px) {
+  .footer-text {
+    font-size: 12px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .footer {
+    padding: 5px;
+  }
+}
+
+.translator {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 50px;
+}
+@media only screen and (max-width: 768px) {
+  .translator {
+    gap: 20px;
+    flex-direction: column;
+  }
+}
+.translator-heading {
+  font-size: 40px;
+}
+@media only screen and (max-width: 768px) {
+  .translator-heading {
+    font-size: 20px;
+  }
+}
+.translator-desc {
+  font-size: 18px;
+}
+@media only screen and (max-width: 768px) {
+  .translator-desc {
+    font-size: 12px;
+  }
+}
+
+.morse {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 55vh;
+  width: 100%;
+  gap: 10px;
+}
+@media only screen and (max-width: 768px) {
+  .morse {
+    gap: 5px;
+    height: 35vh;
+  }
+}
+.morse h3 {
+  justify-self: center;
+  z-index: 1;
+  font-size: 24px;
+  height: 40px;
+}
+@media only screen and (max-width: 768px) {
+  .morse h3 {
+    height: 30px;
+    font-size: 14px;
+  }
+}
+.morse-area {
+  resize: none;
+  height: 100%;
+  background-color: var(--c-bg);
+  font-size: 18px;
+  padding: 10px;
+  color: var(--c-txt);
+}
+.morse-area:focus {
+  border: 1px solid #fff;
+  overflow: hidden;
+  outline: none;
+}
+@media only screen and (max-width: 768px) {
+  .morse-area {
+    height: 100%;
+    font-size: 12px;
+    padding: 5px;
+  }
+}
+
+.error {
+  height: 50px;
+}
+@media only screen and (max-width: 768px) {
+  .error {
+    height: 20px;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */

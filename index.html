@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/css/styles.css" />
+    <link rel="icon" href="./assets/logo.png" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Space+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <script src="./src/js/script.js" defer></script>
+    <title>Morse-Code-Translator</title>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1 class="translator-heading">Morse-Code-Translator</h1>
+        <p class="translator-desc">International Morse</p>
+        <p class="translator-desc">
+          .. -. - . .-. -. .- - .. --- -. .- .-.. / -- --- .-. ... .
+        </p>
+      </header>
+      <section class="translator">
+        <div class="translator-input morse">
+          <h3>Input:</h3>
+          <textarea
+            id="input"
+            class="morse-area input-text"
+            name="input"
+            placeholder="Type text or morse code using '.', '-' or '_', using a space between letters and '/' between words..."
+          ></textarea>
+          <div class="error error-input"></div>
+        </div>
+        <div class="translator-output morse">
+          <h3>Output:</h3>
+          <textarea
+            readonly
+            id="output"
+            class="morse-area output-text"
+            name="output"
+            placeholder="The translated message appears here with '#' indicating an untranslatable character..."
+          ></textarea>
+          <div class="error error-output"></div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <span class="footer-date" id="footerDate"></span>
+      <span class="footer-text"> - IHESLOP</span>
+    </footer>
+  </body>
+</html>
