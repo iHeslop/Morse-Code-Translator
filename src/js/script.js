@@ -2,7 +2,7 @@
 const date = document.getElementById("footerDate");
 date.innerHTML = new Date().toDateString();
 
-//Morse Code Objects:
+// Morse Code Object:
 const code = {
   A: ".-",
   B: "-...",
@@ -31,10 +31,16 @@ const code = {
   Z: "--..",
 };
 
-// English to Morse
+// Reverse code for Morse code to English
+const reverseCode = {};
+for (let letter in code) {
+  reverseCode[code[letter]] = letter;
+}
+
 const input = document.getElementById("input");
 const output = document.getElementById("output");
 
+// English to Morse
 function convertToMorse(text) {
   return text
     .split("")
@@ -46,13 +52,30 @@ function convertToMorse(text) {
     .join(" ");
 }
 
+// Morse to English
+function convertToEnglish(morse) {
+  return morse
+    .split(" ")
+    .map((symbol) => {
+      if (symbol === "/") return " ";
+      if (reverseCode.hasOwnProperty(symbol)) return reverseCode[symbol];
+      return "";
+    })
+    .join("");
+}
+
 function updateOutput() {
-  output.textContent = convertToMorse(input.value.toUpperCase());
+  if (
+    input.value.trim().startsWith(".") ||
+    input.value.trim().startsWith("-")
+  ) {
+    output.textContent = convertToEnglish(input.value.trim());
+  } else {
+    output.textContent = convertToMorse(input.value.toUpperCase());
+  }
 }
 
 input.addEventListener("input", updateOutput);
 input.addEventListener("keydown", (event) => {
   if (event.key === "Backspace") updateOutput();
 });
-
-//Morse to English
