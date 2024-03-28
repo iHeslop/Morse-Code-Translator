@@ -37,31 +37,53 @@ for (let letter in code) {
   reverseCode[code[letter]] = letter;
 }
 
+// Error Display Code
+const errorMessage = (text, message) => {
+  if (text.includes("#")) {
+    errorInput.textContent = message;
+    return text;
+  } else {
+    errorInput.textContent = "";
+    return text;
+  }
+};
+
 const input = document.getElementById("input");
 const output = document.getElementById("output");
+const errorInput = document.getElementById("errorInput");
 
 // English to Morse
 function convertToMorse(text) {
-  return text
+  const decoded = text
     .split("")
     .map((char) => {
       if (char === " ") return "/";
-      if (code.hasOwnProperty(char)) return code[char];
-      return "";
+      if (code.hasOwnProperty(char)) {
+        return code[char];
+      } else {
+        return "#";
+      }
     })
     .join(" ");
+  errorMessage(decoded, "Error: Cannot translate the highlighted characters");
+  return decoded;
 }
 
 // Morse to English
 function convertToEnglish(morse) {
-  return morse
+  const decoded = morse
     .split(" ")
     .map((symbol) => {
       if (symbol === "/") return " ";
-      if (reverseCode.hasOwnProperty(symbol)) return reverseCode[symbol];
-      return "";
+      if (reverseCode.hasOwnProperty(symbol)) {
+        return reverseCode[symbol];
+      } else {
+        return "#";
+      }
     })
     .join("");
+  errorMessage(decoded, "Error: Invalid morse code symbol");
+  return decoded;
 }
 
 function updateOutput() {
