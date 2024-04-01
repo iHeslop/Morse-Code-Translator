@@ -31,7 +31,7 @@ describe("Test cases for converting Morse Code to English", () => {
     ).toBe("MY NAME IS JACK");
   });
   test("Should insert error character if an untranslatable character is present", () => {
-    expect(convertToEnglish(".....")).toBe("#");
+    expect(convertToEnglish(".....")).toBe("5");
     expect(convertToEnglish(".... / $.. . / ...")).toBe("H #E S");
     expect(convertToEnglish("...#  4.0 98")).toBe("####");
   });
