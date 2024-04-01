@@ -112,7 +112,7 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 10vh;
+  height: 50vh;
   width: 100%;
   @include queries.small {
     height: 35vh;
