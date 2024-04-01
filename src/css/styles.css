@@ -36,7 +36,7 @@ main {
   main {
     gap: 3%;
     margin-top: -50px;
-    height: 87%;
+    height: 80%;
     width: 85vw;
     padding: 20px;
     box-shadow: 0.6rem 0.6rem black;
@@ -126,7 +126,7 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 55vh;
+  height: 10vh;
   width: 100%;
 }
 @media only screen and (max-width: 768px) {
