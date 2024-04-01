@@ -152,4 +152,8 @@ header {
   @include queries.small {
     height: 20px;
   }
+  &-text {
+    color: red;
+    font-size: 30px;
+  }
 }

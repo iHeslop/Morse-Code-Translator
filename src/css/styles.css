@@ -175,5 +175,9 @@ header {
     height: 20px;
   }
 }
+.error-text {
+  color: red;
+  font-size: 30px;
+}
 
 /*# sourceMappingURL=styles.css.map */
