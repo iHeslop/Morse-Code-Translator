@@ -36,6 +36,7 @@ const code = {
   "--...": "7",
   "---..": "8",
   "----.": "9",
+  "/": " ",
 };
 
 // Morse to English
@@ -43,12 +44,10 @@ export const convertToEnglish = (morse) => {
   return morse
     .split(" ")
     .map((symbol) => {
-      if (symbol === "/") return " ";
       if (code.hasOwnProperty(symbol)) {
         return code[symbol];
-      } else {
-        return "#";
       }
+      return "#";
     })
     .join("");
 };

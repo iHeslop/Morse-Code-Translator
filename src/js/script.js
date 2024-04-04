@@ -1,7 +1,7 @@
 import { convertToEnglish } from "./convertToEnglish.js";
 import { convertToMorse } from "./convertToMorse.js";
 
-// Morse Code Audio Object:
+// Morse Code Objects:
 const code = {
   ".-": "../../assets/sounds/15716__blackstrobe__a.wav",
   "-...": "../../assets/sounds/15717__blackstrobe__b.wav",
@@ -40,6 +40,44 @@ const code = {
   "---..": "../../assets/sounds/15737__blackstrobe__morse_8.wav",
   "----.": "../../assets/sounds/15738__blackstrobe__morse_9.wav",
 };
+const conversionCode = {
+  A: ".-",
+  B: "-...",
+  C: "-.-.",
+  D: "-..",
+  E: ".",
+  F: "..-.",
+  G: "--.",
+  H: "....",
+  I: "..",
+  J: ".---",
+  K: "-.-",
+  L: ".-..",
+  M: "--",
+  N: "-.",
+  O: "---",
+  P: ".--.",
+  Q: "--.-",
+  R: ".-.",
+  S: "...",
+  T: "-",
+  U: "..-",
+  V: "...-",
+  W: ".--",
+  X: "-..-",
+  Y: "-.--",
+  Z: "--..",
+  0: "-----",
+  1: ".----",
+  2: "..---",
+  3: "...--",
+  4: "....-",
+  5: ".....",
+  6: "-....",
+  7: "--...",
+  8: "---..",
+  9: "----.",
+};
 
 // Date Functionality:
 const date = document.getElementById("footerDate");
@@ -50,8 +88,12 @@ const input = document.getElementById("input");
 const output = document.getElementById("output");
 const errorInput = document.getElementById("errorInput");
 const btn = document.getElementById("playBtn");
+const legendBtn = document.getElementById("legendBtn");
+const legendModal = document.getElementById("legendModal");
+const closeModal = document.getElementById("closeModal");
 let isCorrect = true;
 let isPlaying = false;
+let inCorrectChar = null;
 
 // Error Display Code
 const errorMessage = (message) => {
@@ -73,39 +115,31 @@ const updateOutput = () => {
     output.textContent = convertToEnglish(input.value.trim());
     errorMessage("Error: Invalid morse code symbol");
   } else {
-    const incorrectChar = input.value.slice(-1);
+    const lastChar = input.value.slice(-1);
+    if (!conversionCode.hasOwnProperty(lastChar.toUpperCase())) {
+      inCorrectChar = lastChar;
+    }
     output.textContent = convertToMorse(input.value);
-    errorMessage(`Error: Untranslatable character detected: ${incorrectChar}`);
+    errorMessage(`Error: Untranslatable character detected: ${inCorrectChar}`);
   }
 };
 
 // Audio Playing Code
 const playOutput = (e) => {
   e.preventDefault();
-  if (isCorrect && !isPlaying && output.value.length > 0) {
+  if (isCorrect && !isPlaying && output.value.trim()) {
     isPlaying = true;
-    const outputText = output.textContent.trim();
-    const symbols = outputText.split(" ");
+    const symbols = output.textContent.trim().split(" ");
     let index = 0;
     const playNextSound = () => {
       if (index < symbols.length) {
-        const symbol = symbols[index];
-        if (symbol === "/") {
-          index++;
-          playNextSound();
-        } else if (symbol in code) {
+        const symbol = symbols[index++];
+        if (symbol !== "/") {
           const audio = new Audio(code[symbol]);
           audio.play();
-          audio.onended = () => {
-            setTimeout(() => {
-              index++;
-              playNextSound();
-            }, 500);
-          };
-        }
-      } else {
-        isPlaying = false;
-      }
+          audio.onended = () => setTimeout(playNextSound, 500);
+        } else playNextSound();
+      } else isPlaying = false;
     };
     playNextSound();
   }
@@ -114,5 +148,11 @@ const playOutput = (e) => {
 input.addEventListener("input", updateOutput);
 input.addEventListener("keydown", (event) => {
   if (event.key === "Backspace") updateOutput();
+});
+legendBtn.addEventListener("click", () => {
+  legendModal.classList.add("viewModal");
+});
+closeModal.addEventListener("click", () => {
+  legendModal.classList.remove("viewModal");
 });
 btn.addEventListener("click", playOutput);

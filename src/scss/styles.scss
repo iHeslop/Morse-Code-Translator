@@ -28,13 +28,13 @@ main {
   flex-direction: column;
   align-items: center;
   margin-top: -50px;
-  padding: 50px;
+  padding: 30px;
   background-color: var(--c-bg);
   height: 80vh;
   width: 90vw;
   box-shadow: 1rem 1rem black;
   @include queries.small {
-    gap: 3%;
+    gap: 1%;
     margin-top: -80px;
     height: 80%;
     width: 85vw;
@@ -49,7 +49,7 @@ header {
   align-items: center;
   gap: 10px;
   @include queries.small {
-    gap: 5px;
+    gap: 10px;
     align-items: flex-start;
   }
 }
@@ -87,23 +87,27 @@ header {
   justify-content: center;
   height: 100%;
   width: 100%;
-  padding-top: 20px;
+  margin-top: 20px;
   gap: 50px;
   @include queries.small {
     padding-top: 0px;
-    gap: 20px;
+    gap: 10px;
     flex-direction: column;
+    margin-top: 10px;
   }
   &-heading {
     font-size: 40px;
+    padding-bottom: 5px;
     @include queries.small {
       font-size: 18px;
     }
   }
   &-desc {
     font-size: 18px;
+    padding-bottom: 5px;
     @include queries.small {
       font-size: 12px;
+      padding-bottom: 5px;
     }
   }
 }
@@ -112,7 +116,7 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 50vh;
+  height: 100%;
   width: 100%;
   @include queries.small {
     height: 35vh;
@@ -122,13 +126,12 @@ header {
     font-size: 24px;
     padding-bottom: 10px;
     @include queries.small {
-      padding-bottom: 5px;
       font-size: 14px;
     }
   }
   &-area {
     resize: none;
-    height: 100%;
+    height: 75%;
     background-color: var(--c-bg);
     font-size: 18px;
     padding: 10px;
@@ -146,6 +149,14 @@ header {
   }
 }
 
+.instructions {
+  height: 50px;
+  @include queries.small {
+    height: 100px;
+    font-size: 10px;
+  }
+}
+
 .error {
   display: flex;
   gap: 10px;
@@ -153,8 +164,10 @@ header {
   height: 50px;
   @include queries.small {
     height: 60px;
-    font-size: 12px;
-    padding-top: 10px;
+    font-size: 10px;
+  }
+  &-input {
+    color: #ff7f7f;
   }
 }
 
@@ -163,8 +176,8 @@ header {
   height: 30px;
   width: 30px;
   @include queries.small {
-    height: 25px;
-    width: 25px;
+    height: 20px;
+    width: 20px;
   }
   &-img {
     height: 100%;
@@ -173,4 +186,104 @@ header {
   &:hover {
     cursor: pointer;
   }
+}
+
+.legend {
+  display: flex;
+  position: absolute;
+  left: calc(5vw + 30px);
+  border: 1px solid var(--c-sc);
+  opacity: 0.5;
+  border-radius: 3px;
+  padding: 4px;
+  transition: all ease-in-out 0.3s;
+  font-size: 14px;
+  &:hover {
+    cursor: pointer;
+    opacity: 1;
+  }
+  @include queries.small {
+    padding: 1px;
+    left: calc(7.5vw + 20px);
+    font-size: 10px;
+    bottom: calc(10% + 50px);
+  }
+}
+
+.modal {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.4);
+
+  &-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+  }
+  &-heading {
+    font-size: 20px;
+    @include queries.small {
+      font-size: 14px;
+    }
+  }
+  &-close {
+    cursor: pointer;
+    font-size: 32px;
+    @include queries.small {
+      font-size: 24px;
+    }
+  }
+  &-content {
+    background-color: var(--c-bg);
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border: 2px solid var(--c-sc);
+    width: 500px;
+    height: 450px;
+    @include queries.small {
+      padding-top: 0px;
+      padding-bottom: 10px;
+      padding-left: 10px;
+      padding-right: 10px;
+      width: 250px;
+      height: 350px;
+    }
+  }
+  &-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 100%;
+    &-letters {
+      height: 90%;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      & p {
+        width: 165px;
+        @include queries.small {
+          font-size: 12px;
+          width: 78px;
+        }
+      }
+    }
+    &-numbers {
+      @include queries.small {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.viewModal {
+  display: flex;
 }

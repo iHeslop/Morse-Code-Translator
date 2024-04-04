@@ -23,6 +23,10 @@
         </p>
         <p class="translator-desc">International Morse</p>
       </header>
+      <section class="legend">
+        <h4 class="legend-button" id="legendBtn">...</h4>
+      </section>
+
       <section class="translator">
         <div class="translator-input morse">
           <h3>Input:</h3>
@@ -30,9 +34,15 @@
             id="input"
             class="morse-area input-text"
             name="input"
-            placeholder="Type text or morse code using '.', '-' or '_', using a space between letters and '/' between words..."
+            placeholder="Type input here..."
           ></textarea>
           <div class="error error-input" id="errorInput"></div>
+          <div class="instructions">
+            <p>
+              Type text or morse code using '.', '-' or '_', using a space
+              between letters and '/' between words.
+            </p>
+          </div>
         </div>
         <div class="translator-output morse">
           <h3>Output:</h3>
@@ -41,7 +51,6 @@
             id="output"
             class="morse-area output-text"
             name="output"
-            placeholder="The translated message appears here with '#' indicating an untranslatable character..."
           ></textarea>
           <div class="error">
             <button class="play" id="playBtn">
@@ -49,9 +58,65 @@
             </button>
             <p>Play Morse Code Audio</p>
           </div>
+          <div class="instructions">
+            <p>
+              The translated message appears here with '#' indicating an
+              untranslatable character.
+            </p>
+          </div>
         </div>
       </section>
     </main>
+    <section class="modal" id="legendModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-heading">Morse Code Legend:</h4>
+          <span class="modal-close" id="closeModal">&times;</span>
+        </div>
+        <div class="modal-text">
+          <div class="modal-text-letters">
+            <p>A: .-</p>
+            <p>B: -...</p>
+            <p>C: -.-.</p>
+            <p>D: -..</p>
+            <p>E: .</p>
+            <p>F: ..-.</p>
+            <p>G: --.</p>
+            <p>H: ....</p>
+            <p>I: ..</p>
+            <p>J: .---</p>
+            <p>K: -.-</p>
+            <p>L: .-..</p>
+            <p>M: --</p>
+            <p>N: -.</p>
+            <p>O: ---</p>
+            <p>P: .--.</p>
+            <p>Q: --.-</p>
+            <p>R: .-.</p>
+            <p>S: ...</p>
+            <p>T: -</p>
+            <p>U: ..-</p>
+            <p>V: ...-</p>
+            <p>W: .--</p>
+            <p>X: -..-</p>
+            <p>Y: -.--</p>
+            <p>Z: --..</p>
+          </div>
+          <div class="modal-text-numbers">
+            <p>0: -----</p>
+            <p>1: .----</p>
+            <p>2: ..---</p>
+            <p>3: ...--</p>
+            <p>4: ....-</p>
+            <p>5: .....</p>
+            <p>6: -....</p>
+            <p>7: --...</p>
+            <p>8: ---..</p>
+            <p>9: ----.</p>
+          </div>
+        </div>
+      </div>
+    </section>
     <footer class="footer">
       <span class="footer-date" id="footerDate"></span>
       <span class="footer-text"> - IHESLOP</span>

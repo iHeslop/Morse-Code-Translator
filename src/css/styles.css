@@ -26,7 +26,7 @@ main {
   flex-direction: column;
   align-items: center;
   margin-top: -50px;
-  padding: 50px;
+  padding: 30px;
   background-color: var(--c-bg);
   height: 80vh;
   width: 90vw;
@@ -34,7 +34,7 @@ main {
 }
 @media only screen and (max-width: 768px) {
   main {
-    gap: 3%;
+    gap: 1%;
     margin-top: -80px;
     height: 80%;
     width: 85vw;
@@ -51,7 +51,7 @@ header {
 }
 @media only screen and (max-width: 768px) {
   header {
-    gap: 5px;
+    gap: 10px;
     align-items: flex-start;
   }
 }
@@ -95,18 +95,20 @@ header {
   justify-content: center;
   height: 100%;
   width: 100%;
-  padding-top: 20px;
+  margin-top: 20px;
   gap: 50px;
 }
 @media only screen and (max-width: 768px) {
   .translator {
     padding-top: 0px;
-    gap: 20px;
+    gap: 10px;
     flex-direction: column;
+    margin-top: 10px;
   }
 }
 .translator-heading {
   font-size: 40px;
+  padding-bottom: 5px;
 }
 @media only screen and (max-width: 768px) {
   .translator-heading {
@@ -115,10 +117,12 @@ header {
 }
 .translator-desc {
   font-size: 18px;
+  padding-bottom: 5px;
 }
 @media only screen and (max-width: 768px) {
   .translator-desc {
     font-size: 12px;
+    padding-bottom: 5px;
   }
 }
 
@@ -126,7 +130,7 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 50vh;
+  height: 100%;
   width: 100%;
 }
 @media only screen and (max-width: 768px) {
@@ -141,13 +145,12 @@ header {
 }
 @media only screen and (max-width: 768px) {
   .morse h3 {
-    padding-bottom: 5px;
     font-size: 14px;
   }
 }
 .morse-area {
   resize: none;
-  height: 100%;
+  height: 75%;
   background-color: var(--c-bg);
   font-size: 18px;
   padding: 10px;
@@ -166,6 +169,16 @@ header {
   }
 }
 
+.instructions {
+  height: 50px;
+}
+@media only screen and (max-width: 768px) {
+  .instructions {
+    height: 100px;
+    font-size: 10px;
+  }
+}
+
 .error {
   display: flex;
   gap: 10px;
@@ -175,9 +188,11 @@ header {
 @media only screen and (max-width: 768px) {
   .error {
     height: 60px;
-    font-size: 12px;
-    padding-top: 10px;
+    font-size: 10px;
   }
+}
+.error-input {
+  color: #ff7f7f;
 }
 
 .play {
@@ -187,8 +202,8 @@ header {
 }
 @media only screen and (max-width: 768px) {
   .play {
-    height: 25px;
-    width: 25px;
+    height: 20px;
+    width: 20px;
   }
 }
 .play-img {
@@ -197,6 +212,115 @@ header {
 }
 .play:hover {
   cursor: pointer;
+}
+
+.legend {
+  display: flex;
+  position: absolute;
+  left: calc(5vw + 30px);
+  border: 1px solid var(--c-sc);
+  opacity: 0.5;
+  border-radius: 3px;
+  padding: 4px;
+  transition: all ease-in-out 0.3s;
+  font-size: 14px;
+}
+.legend:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+@media only screen and (max-width: 768px) {
+  .legend {
+    padding: 1px;
+    left: calc(7.5vw + 20px);
+    font-size: 10px;
+    bottom: calc(10% + 50px);
+  }
+}
+
+.modal {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.modal-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+.modal-heading {
+  font-size: 20px;
+}
+@media only screen and (max-width: 768px) {
+  .modal-heading {
+    font-size: 14px;
+  }
+}
+.modal-close {
+  cursor: pointer;
+  font-size: 32px;
+}
+@media only screen and (max-width: 768px) {
+  .modal-close {
+    font-size: 24px;
+  }
+}
+.modal-content {
+  background-color: var(--c-bg);
+  margin: auto;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  padding-left: 40px;
+  padding-right: 40px;
+  border: 2px solid var(--c-sc);
+  width: 500px;
+  height: 450px;
+}
+@media only screen and (max-width: 768px) {
+  .modal-content {
+    padding-top: 0px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 250px;
+    height: 350px;
+  }
+}
+.modal-text {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 100%;
+}
+.modal-text-letters {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.modal-text-letters p {
+  width: 165px;
+}
+@media only screen and (max-width: 768px) {
+  .modal-text-letters p {
+    font-size: 12px;
+    width: 78px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .modal-text-numbers {
+    font-size: 12px;
+  }
+}
+
+.viewModal {
+  display: flex;
 }
 
 /*# sourceMappingURL=styles.css.map */
